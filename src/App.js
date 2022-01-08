@@ -1,12 +1,24 @@
 import "./styles.css";
+import { useState } from "react";
+import { ChildArea } from "./ChildArea";
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  console.log("App");
+  const [text, setText] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const onChangeText = (e) => setText(e.target.value);
+  const onClickOpen = () => {
+    setOpen(!open);
+  };
 
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <input value={text} onChange={onChangeText} />
+      <br />
+      <br />
+      <button onClick={onClickOpen}>表示</button>
+      <ChildArea open={open} />
     </div>
   );
 }
